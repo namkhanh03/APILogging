@@ -1,0 +1,31 @@
+<h2 class="text-center">Log List</h2>
+<table class= "table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>timestamp</th>
+            <th>api_name</th>
+            <th>method</th>
+            <th>status_code</th>
+            <th>request_url</th>
+            <th>request_body</th>
+            <th>response</th>
+            <th>error</th>
+            <th>user_id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = 'let log of logs'>
+            <td>{{log.id}}</td>
+            <td>{{log.timestamp}}</td>
+            <td>{{log.api_name}}</td>
+            <td>{{log.method}}</td>
+            <td>{{log.status_code}}</td>
+            <td>{{log.request_url}}</td>
+            <td>{{log.request_body}}</td>
+            <td>{{log.response}}</td>
+            <td>{{log.error}}</td>
+            <td>{{log.user_id}}</td>
+        </tr>
+    </tbody>
+</table>
