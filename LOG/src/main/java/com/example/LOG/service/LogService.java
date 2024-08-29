@@ -1,19 +1,11 @@
 package com.example.LOG.service;
 
 import com.example.LOG.entity.Api_logs;
-import com.example.LOG.repository.LogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
+public interface LogService {
+    Page<Api_logs> getLogs(int page, int size);
 
-@Service
-public class LogService {
-
-    @Autowired
-    private LogRepository logRepository;
-
-    public List<Api_logs> getLogs(){
-        return logRepository.findAll();
-    }
+    Page<Api_logs> getLogsBymethod(String method, int page, int size);
 }
+

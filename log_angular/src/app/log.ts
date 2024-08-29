@@ -10,3 +10,8 @@ export class Log {
     error!: string;
     user_id!: number;
 }
+
+export interface Page<T> {
+    content: T[];
+    totalPages: number
+}
