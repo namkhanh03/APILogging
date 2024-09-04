@@ -1,6 +1,14 @@
 <h2 class="text-center">Log List</h2>
+
+<nz-range-picker
+  [(ngModel)]="dateRange"
+  [nzFormat]="'yyyy-MM-dd HH:mm:ss'"
+  [nzShowTime]="true"
+  (ngModelChange)="searchLogsByTime()">
+</nz-range-picker>
+
 <div>
-    <input [(ngModel)]="method" placeholder="Search for ID" />
+    <input [(ngModel)]="requestUrl" placeholder="Search for ID" />
     <button (click)="searchLogs()">Search</button>
 </div>
 <div>

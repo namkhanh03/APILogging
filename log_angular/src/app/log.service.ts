@@ -14,7 +14,11 @@ export class LogService {
     return this.httpClient.get<any>(`${this.baseUrl}?page=${page}&size=${size}`);
   }
 
-  searchLogList(page: number, size: number, method: string): Observable<Page<Log>> {
-    return this.httpClient.get<any>(`${this.baseUrl}/search?page=${page}&size=${size}&method=${method}`);
+  searchLogList(page: number, size: number, requestUrl: string): Observable<Page<Log>> {
+    return this.httpClient.get<any>(`${this.baseUrl}/search-by-requestUrl?page=${page}&size=${size}&requestUrl=${requestUrl}`);
+  }
+
+  searchLogListByTime(page: number, size: number, startDateTime: string, endDateTime: string): Observable<Page<Log>> {
+    return this.httpClient.get<any>(`${this.baseUrl}/search-by-timestampl?page=${page}&size=${size}&startDateTime=${startDateTime}&endDateTime=${endDateTime}`);
   }
 }

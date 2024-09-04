@@ -1,17 +1,21 @@
 package com.example.LOG.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import java.time.LocalDateTime;
 
 @Entity
 public class Api_logs {
     @Id
     private int id;
-    private String timestamp;
+    private LocalDateTime timestamp;
     private String api_name;
     private String method;
     private int status_code;
-    private String request_url;
+    @Column(name = "request_url")
+    private String requestUrl;
     private String request_body;
     private String response;
     private String error;
@@ -25,11 +29,11 @@ public class Api_logs {
         this.id = id;
     }
 
-    public String getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -58,11 +62,11 @@ public class Api_logs {
     }
 
     public String getRequest_url() {
-        return request_url;
+        return requestUrl;
     }
 
     public void setRequest_url(String request_url) {
-        this.request_url = request_url;
+        this.requestUrl = request_url;
     }
 
     public String getRequest_body() {

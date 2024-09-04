@@ -10,14 +10,16 @@ import { isEmpty } from 'rxjs';
 })
 export class LoglistComponent {
   logs: Log[] | undefined;
-  method!: string
+  requestUrl!: string;
+  startDateTime!: string;
+  endDateTime!: string;
+  dateRange!: string;
   currentPage = 0;
   pageSize = 10;
   totalPages!: number;
   constructor(private logService: LogService){}
 
   ngOnInit(): void{
-    this.getLogs();
     this.searchLogs();
   }
 
@@ -29,7 +31,18 @@ export class LoglistComponent {
   }
 
   searchLogs(){
-    this.logService.searchLogList(this.currentPage, this.pageSize, this.method).subscribe((data : Page<Log>) => {
+    this.logService.searchLogList(this.currentPage, this.pageSize, this.requestUrl).subscribe((data : Page<Log>) => {
+      if(data.content.length != 0){
+        this.logs = data.content;
+        this.totalPages = data.totalPages;
+      } else {
+        this.getLogs()
+      }
+    })
+  }
+
+  searchLogsByTime(){
+    this.logService.searchLogListByTime(this.currentPage, this.pageSize, this.startDateTime, this.endDateTime).subscribe((data : Page<Log>) => {
       if(data.content.length != 0){
         this.logs = data.content;
         this.totalPages = data.totalPages;
@@ -46,5 +59,7 @@ export class LoglistComponent {
     }
   }
 
-  
+  onChange(result: Date[]): void {
+    console.log('onChange: ', result);
+  }
 }
